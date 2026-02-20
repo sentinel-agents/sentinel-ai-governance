@@ -1,0 +1,118 @@
+:root {
+  color-scheme: dark;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, #1d2331, #0e1117 60%);
+  color: #eef2ff;
+}
+
+.card {
+  width: min(720px, 92vw);
+  background: rgba(15, 17, 23, 0.95);
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  font-size: 1.8rem;
+  letter-spacing: 0.02em;
+}
+
+textarea,
+button {
+  width: 100%;
+  font-size: 1rem;
+}
+
+textarea {
+  min-height: 160px;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.35);
+  color: inherit;
+  resize: vertical;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.9rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(120deg, #2c3e50, #34495e);
+  color: #eef2ff;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mode-bar {
+  margin-top: 1.25rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 12px;
+  background: rgba(8, 11, 18, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mode-indicator {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.mode-warning {
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  color: #ffcc80;
+}
+
+.storage-status {
+  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  background: rgba(10, 14, 22, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cid-value {
+  font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+  font-size: 0.95rem;
+  word-break: break-all;
+  color: #9ad4ff;
+}
+
+.cid-status {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#output {
+  margin-top: 1.25rem;
+  padding: 1.25rem;
+  background: rgba(4, 6, 12, 0.55);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 140px;
+  font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+  font-size: 0.9rem;
+  overflow-x: auto;
+}
+
+.placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}

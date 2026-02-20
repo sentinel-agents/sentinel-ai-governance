@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page_title }}</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script defer src="/static/app.js"></script>
+  </head>
+  <body>
+    <main class="card">
+      <h1>Sentinel – AI Governance Layer</h1>
+      <textarea id="scenario" placeholder="Describe your AI collaboration scenario..."></textarea>
+      <button id="run-btn" type="button">Run Sentinel</button>
+      <section class="mode-bar" aria-live="polite">
+        <div id="mode-indicator" class="mode-indicator">Mode: pending</div>
+        <div id="mode-warning" class="mode-warning" hidden>
+          Fallback to deterministic Sentinel engine.
+        </div>
+      </section>
+      <section class="storage-status" aria-live="polite">
+        <div id="cid-display" class="cid-value">CID not available</div>
+        <div id="cid-status" class="cid-status">Storage awaiting first run.</div>
+      </section>
+      <section id="output" aria-live="polite">
+        <div class="placeholder">Awaiting Sentinel run…</div>
+      </section>
+    </main>
+  </body>
+</html>
