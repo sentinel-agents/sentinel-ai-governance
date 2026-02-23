@@ -19,6 +19,7 @@ from app.storage_pinata import upload_json
 
 import os
 from dotenv import load_dotenv
+from app.crypto_sign import load_or_create_keypair, public_key_b64, sign_hash, verify_signature
 
 # Load environment variables from .env file
 load_dotenv()
@@ -313,6 +314,26 @@ def run_sentinel(payload: RunSentinelRequest, response: Response):
     canonical_post = canonical_bytes(record_dict)
     record_dict["sha256_post"] = hashlib.sha256(canonical_post).hexdigest()
 
+    # --- Milestone 1B: Ed25519 signature over sha256_post ---
+    try:
+        priv_bytes, pub_bytes = load_or_create_keypair()
+        signed_hash = record_dict["sha256_post"]
+        record_dict["signature_alg"] = "ed25519"
+        record_dict["signed_hash"] = signed_hash
+        record_dict["public_key"] = public_key_b64(pub_bytes)
+        record_dict["signature"] = sign_hash(priv_bytes, signed_hash)
+
+        # Optional: add conflict flag if verification fails
+        if "verify_signature" in globals():
+            if not verify_signature(pub_bytes, signed_hash, record_dict["signature"]):
+                record_dict["conflict_flags"].append("signature_verify_failed")
+    except Exception as exc:  # noqa: BLE001
+        LOGGER.exception("Signature generation failed: %s", exc)
+        record_dict["conflict_flags"].append("signature_generation_failed")
+        # If schema requires signature fields, we still must set them (non-empty ideally).
+        # But better: re-raise to catch bug early during milestone.
+        raise
+
     fallback_header = "1" if (fallback_triggered or ("MOCK" in actual_mode_label)) else "0"
     response.headers["x-sentinel-mode"] = actual_mode_label
     response.headers["x-sentinel-fallback"] = fallback_header
@@ -320,3 +341,4 @@ def run_sentinel(payload: RunSentinelRequest, response: Response):
     response.headers["x-sentinel-openai-error"] = openai_error_msg
 
     return GovernanceRecord(**record_dict)
+

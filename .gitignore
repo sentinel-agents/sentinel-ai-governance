@@ -37,5 +37,6 @@ agent_log.jsonl
 node_modules/
 
 # Build
-dist/
-build/
+.sentinel_ed25519_keypair.json   
+body.json
+temp_main.txt

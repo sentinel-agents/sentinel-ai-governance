@@ -28,3 +28,7 @@ class GovernanceRecord(BaseModel):
     sha256: str
     sha256_post: str
     storage: StorageRef
+    signature_alg: Literal["ed25519"] = "ed25519"
+    signed_hash: str = Field(..., min_length=1, max_length=128)
+    public_key: str = Field(..., min_length=1, max_length=256)
+    signature: str = Field(..., min_length=1, max_length=256)
