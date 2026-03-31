@@ -69,7 +69,7 @@ Before execution, every AI-driven action is:
 
 ## 🧭 Governance & Control
 
-![Governance & Control](docs/governance-control.jpeg)
+![Image](https://github.com/user-attachments/assets/e771ecb3-27ab-4caf-a19c-93b7078239e0)
 
 ---
 
