@@ -8,9 +8,9 @@ It combines multi-agent risk analysis, deterministic decision logic, cryptograph
 
 ---
 
-🖼️ System Architecture
+## 🖼️ System Architecture
 
-"Architecture" (./docs/architecture.jpeg)
+![Architecture](docs/architecture.jpeg)
 
 ---
 
@@ -41,9 +41,9 @@ Before execution, every AI-driven action is:
 
 ---
 
-🔐 Trust Layer (Security & Integrity)
+## 🔐 Trust Layer
 
-"Trust Layer" (./docs/trust-layer.jpeg)
+![Trust Layer](docs/trust-layer.jpeg)
 
 ---
 
@@ -67,9 +67,9 @@ Before execution, every AI-driven action is:
 
 ---
 
-🧭 Governance & Control Flow
+## 🧭 Governance & Control
 
-"Governance" (./docs/governance-control.jpeg)
+![Governance & Control](docs/governance-control.jpeg)
 
 ---
 
