@@ -43,7 +43,7 @@ Before execution, every AI-driven action is:
 
 ## 🔐 Trust Layer
 
-![Trust Layer](docs/trust-layer.jpeg)
+![Image](https://github.com/user-attachments/assets/493c34ac-e5d0-45e7-9514-8ec1be882ca0)
 
 ---
 
