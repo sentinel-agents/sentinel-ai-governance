@@ -1,56 +1,177 @@
-# Sentinel
+🛡️ Sentinel – AI Governance Layer
 
-Minimal FastAPI-powered AI governance layer demonstrating multi-agent oversight with dual-mode intelligence (deterministic + OpenAI) and Filecoin/IPFS anchoring.
+🚀 Overview
 
-## Local Development
+Sentinel is an AI governance layer designed to control, validate, and secure autonomous AI agents operating in critical environments.
 
-```powershell
+It combines multi-agent risk analysis, deterministic decision logic, cryptographic integrity, and decentralized storage to ensure trustworthy AI decisions.
+
+---
+
+🖼️ System Architecture
+
+"Architecture" (./docs/architecture.jpeg)
+
+---
+
+⚠️ The Problem
+
+Autonomous AI agents are increasingly used in finance, infrastructure, and critical systems.
+
+However, they introduce major risks:
+
+- Uncontrolled decision-making
+- Lack of governance and oversight
+- Exposure of sensitive data (PII, encryption keys)
+- No verifiable audit trail
+
+---
+
+💡 Our Solution
+
+Sentinel acts as a governance firewall for AI agents.
+
+Before execution, every AI-driven action is:
+
+1. Evaluated by multiple specialized agents
+2. Scored based on risk
+3. Validated through governance logic
+4. Signed cryptographically
+5. Stored on IPFS for auditability
+
+---
+
+🔐 Trust Layer (Security & Integrity)
+
+"Trust Layer" (./docs/trust-layer.jpeg)
+
+---
+
+🧠 How It Works
+
+🔹 Multi-Agent Evaluation
+
+- Security Agent → threat modeling
+- Compliance Agent → regulatory validation
+- Ops Agent → operational safety
+
+---
+
+🔹 Deterministic Governance Engine
+
+- Risk scoring (0–100)
+- Decisions:
+  - "approve"
+  - "approve_with_controls"
+  - "reject"
+
+---
+
+🧭 Governance & Control Flow
+
+"Governance" (./docs/governance-control.jpeg)
+
+---
+
+🧪 Example Scenario
+
+Scenario:
+Deploying an autonomous AI agent managing financial transaction routing across multiple subsidiaries.
+
+Result:
+
+- Security → Reject
+- Compliance → Reject
+- Ops → Approve with controls
+
+👉 Final Decision: REJECT
+
+---
+
+📦 Tech Stack
+
+- FastAPI
+- OpenAI API
+- Pydantic
+- IPFS (Pinata)
+- Ed25519 cryptography
+- Python
+
+---
+
+⚙️ Quick Start
+
+git clone https://github.com/sentinel-agents/sentinel-ai-governance.git
 cd sentinel
+
 python -m venv .venv
-.venv\Scripts\activate
+.\.venv\Scripts\activate
+
 pip install -r requirements.txt
+
 uvicorn app.main:app --reload
-```
 
-Then open http://127.0.0.1:8000/ to access the UI.
+---
 
-### Storage (Pinata/IPFS)
+🔑 Environment Variables
 
-Set your Pinata JWT before running the server:
+Create a ".env" file:
 
-```powershell
-$env:PINATA_JWT="YOUR_PINATA_JWT"
-```
+OPENAI_API_KEY=your_key
+PINATA_JWT=your_token
 
-Every uploaded governance record is public once addressed by its CID. Never upload sensitive or secret data.
+---
 
-### LLM Configuration
+🧪 Run the App
 
-Sentinel can operate in two modes:
+Open:
 
-- **MOCK** – deterministic engine (default when no OpenAI key is present)
-- **OPENAI** – delegates agent scoring to an OpenAI model
+http://127.0.0.1:8000
 
-Environment variables:
+Enter a scenario and run Sentinel.
 
-```powershell
-$env:OPENAI_API_KEY="sk-..."           # optional; enables OPENAI mode
-$env:SENTINEL_MODE="openai"            # force OpenAI (requires API key)
-$env:SENTINEL_MODE="mock"              # force deterministic mock
-$env:SENTINEL_MODE="auto"              # default; use OpenAI only if key present
-```
+---
 
-If OpenAI is requested but unavailable (missing key, HTTP errors, parse issues), Sentinel automatically falls back to the deterministic engine, adds `llm_fallback_mock` (and `llm_parse_error` when parsing fails), and the UI displays a warning banner.
+📊 Output Includes
 
-### Sample run indicators
+- Risk scores per agent
+- Final decision
+- Conflict detection
+- Recommended controls
+- SHA256 hash
+- Cryptographic signature
+- IPFS CID
 
-- **Mode: OPENAI** – live LLM outputs in use
-- **Mode: AUTO->MOCK** – auto mode fell back to deterministic engine (no key found)
-- **Mode: OPENAI->MOCK** – OpenAI was requested but failed; fallback engaged (see conflict flags)
+---
 
-### Hash semantics
+🌍 Vision
 
-- `sha256` (pre-upload) covers the canonical JSON payload with an empty CID — exactly what is pushed to Pinata/IPFS.
-- `sha256_post` hashes the final record after the CID is embedded in the storage reference.
+Sentinel is the foundation for trustworthy autonomous AI systems.
 
-Both hashes use canonical serialization (`json.dumps(..., sort_keys=True, separators=(",", ":"), ensure_ascii=False)`).
+It enables:
+
+- Safe AI deployment
+- Transparent governance
+- Verifiable decision-making
+- Decentralized audit trails
+
+---
+
+🏁 Hackathon Submission
+
+PL Genesis – Frontiers of Collaboration
+
+---
+
+🤝 Future Work
+
+- DAO-based governance
+- On-chain verification
+- Real-time monitoring dashboards
+- Enterprise GRC integration
+
+---
+
+📜 License
+
+MIT License
