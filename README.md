@@ -102,6 +102,7 @@ Result:
 ⚙️ Quick Start
 
 git clone https://github.com/sentinel-agents/sentinel-ai-governance.git
+
 cd sentinel
 
 python -m venv .venv
