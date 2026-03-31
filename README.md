@@ -10,7 +10,7 @@ It combines multi-agent risk analysis, deterministic decision logic, cryptograph
 
 ## 🖼️ System Architecture
 
-![Image](https://github.com/user-attachments/assets/ed2711c4-e5b8-45c9-80b5-cc6c44283cc4)
+![Image](https://github.com/user-attachments/assets/8f2e5bfa-6a28-45e4-8c4a-433126b8bd04)
 
 ---
 
